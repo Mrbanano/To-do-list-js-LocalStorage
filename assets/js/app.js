@@ -6,7 +6,7 @@ const listaTweets = document.getElementById('lista-tweets');
 eventListeners();
 
 function eventListeners() {
-     bienvenido();
+    
      document.querySelector('#formulario').addEventListener('submit', agregarTweet);
      listaTweets.addEventListener('click', borrarTweet);
      document.addEventListener('DOMContentLoaded', localStorageListo);
@@ -19,22 +19,27 @@ function eventListeners() {
 
 // Añadir tweet del formulario
 function agregarTweet(e) {
+
      e.preventDefault();
      // leer el valor del textarea
      const tweet = document.getElementById('tweet').value;
      // crear boton de eliminar
-     const botonBorrar = document.createElement('a');
-     botonBorrar.classList = 'borrar-tweet';
-     botonBorrar.innerText = 'X';
+     const botonBorrar = document.createElement('i');
+     botonBorrar.classList = 'borrar-tweet fas fa-trash-alt';
+     //botonBorrar.innerText = 'X';
 
      // Crear elemento y añadirle el contenido a la lista
-     const li = document.createElement('li');
+     const li = document.createElement('p');
+     const i = document.createComment('i');
+     const div = document.createElement('div');
+     i.classList ='fas fa-lightbulb';
      li.innerText = tweet;
      // añade el botón de borrar al tweet
+     div.appendChild(i);
      li.appendChild(botonBorrar);
+     div.appendChild(li);
      // añade el tweet a la lista
-     listaTweets.appendChild(li);
-
+     listaTweets.appendChild(div).classList.add('idea');
      // Añadir a Local Storage
      agregarTweetLocalStorage(tweet);
 
@@ -43,7 +48,7 @@ function agregarTweet(e) {
 // Elimina el Tweet del DOM
 function borrarTweet(e) {
      e.preventDefault();
-     if(e.target.className === 'borrar-tweet') {
+     if(e.target.className === 'borrar-tweet fas fa-trash-alt') {
           e.target.parentElement.remove();
           borrarTweetLocalStorage(e.target.parentElement.innerText);
      } 
@@ -56,17 +61,22 @@ function localStorageListo() {
 
      tweets.forEach(function(tweet) {
           // crear boton de eliminar
-          const botonBorrar = document.createElement('a');
-          botonBorrar.classList = 'borrar-tweet';
-          botonBorrar.innerText = 'X';
+          const botonBorrar = document.createElement('i');
+          botonBorrar.classList = 'borrar-tweet fas fa-trash-alt';
+          //botonBorrar.innerText = 'X';
 
           // Crear elemento y añadirle el contenido a la lista
-          const li = document.createElement('li');
-          li.innerText = tweet;
-          // añade el botón de borrar al tweet
-          li.appendChild(botonBorrar);
+          const p = document.createElement('p');
+          const div = document.createElement('div');
+          const i = document.createElement('i')
+          i.classList ='fas fa-lightbulb';
+          p.innerText = tweet;
+          // añade el botón de borrar al 
+          div.appendChild(i);
+          div.appendChild(botonBorrar);
+          div.appendChild(p);
           // añade el tweet a la lista
-          listaTweets.appendChild(li);
+          listaTweets.appendChild(div).classList.add('idea');
      });
 }
 
@@ -112,5 +122,5 @@ function borrarTweetLocalStorage(tweet) {
 }
 
 function bienvenido() {
-     alert("👋 Bienvenido  \n\n💻 web basica de tareas almacenadas en LocalStorage");
+     alert("👋 Hola \n\n💻 ¿Quieres guardar algo ? ");
    }
