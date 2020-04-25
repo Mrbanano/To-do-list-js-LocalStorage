@@ -59,6 +59,7 @@ form{
 
 @media (max-width:500px){
   .header {width: 100%;}
+  #logo{width: 100%;}
 }
 
 
