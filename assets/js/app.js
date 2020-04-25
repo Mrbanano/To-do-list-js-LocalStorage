@@ -30,13 +30,13 @@ function agregarTweet(e) {
 
      // Crear elemento y añadirle el contenido a la lista
      const li = document.createElement('p');
-     const i = document.createComment('i');
+     const i = document.createElement('i');
      const div = document.createElement('div');
      i.classList ='fas fa-lightbulb';
      li.innerText = tweet;
      // añade el botón de borrar al tweet
      div.appendChild(i);
-     li.appendChild(botonBorrar);
+     div.appendChild(botonBorrar);
      div.appendChild(li);
      // añade el tweet a la lista
      listaTweets.appendChild(div).classList.add('idea');
@@ -49,8 +49,13 @@ function agregarTweet(e) {
 function borrarTweet(e) {
      e.preventDefault();
      if(e.target.className === 'borrar-tweet fas fa-trash-alt') {
-          e.target.parentElement.remove();
-          borrarTweetLocalStorage(e.target.parentElement.innerText);
+          const idea =  e.target.parentElement;
+          
+          idea.remove();
+          console.log(idea);
+          const value = e.target.parentElement.lastChild.innerText;
+          borrarTweetLocalStorage(value);
+          
      } 
 }
 // Mostrar datos de LocalStorage en la lista
@@ -108,8 +113,7 @@ function borrarTweetLocalStorage(tweet) {
 
      let tweets, tweetBorrar;
      // Elimina la X del tweet
-     tweetBorrar = tweet.substring(0, tweet.length - 1);
-
+     tweetBorrar = tweet;
      tweets = obtenerTweetsLocalStorage();
 
      tweets.forEach(function(tweet, index) {
@@ -119,6 +123,7 @@ function borrarTweetLocalStorage(tweet) {
      }) ;
 
      localStorage.setItem('tweets', JSON.stringify(tweets) );
+     
 }
 
 function bienvenido() {
