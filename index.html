@@ -23,7 +23,7 @@
     <meta name="twitter:site" content="@666alvaro">
     <meta name="twitter:creater" content="@666alvaro">
     <meta name="twitter:title" content="Alvaro Castillo Cv">
-    <meta name="twitter:description" content="Es una aplicacion para guardar recordatiorio, tareas o pesamientos">
+    <meta name="twitter:description" content="Es una aplicacion para guardar recordatiorio, tareas o pensamientos">
     <meta name="twitter:image" content="https://i.postimg.cc/ZRS1LVh8/todo.png">
     <!----facebook-->
     <meta name="og:locale" content="es_MX">
@@ -33,44 +33,47 @@
     <meta name="og:url" content="https://mrbanano.github.io/To-do-list-js-LocalStorage/">
     <meta name="og:site_name" content="https://mrbanano.github.io/To-do-list-js-LocalStorage/">
     <meta name="og:image" content="https://i.postimg.cc/ZRS1LVh8/todo.png">
-     <!----style-->
+    <!----style-->
     <link rel="icon" type="image/png" href="assets/img/bombilla.png">
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/skeleton.css">
+    <!--<link rel="stylesheet" href="assets/css/normalize.css">--->
+    <!--<link rel="stylesheet" href="assets/css/skeleton.css">--->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/custom.css">
     <script src="https://kit.fontawesome.com/54ab5c1dbd.js" crossorigin="anonymous"></script>
-     <!----PWA-->
-     <!----Title-->
+    <!----PWA-->
+    <!----Title-->
     <title>Guardar ideas</title>
 </head>
 
 <body>
-
-    <div id="contenido">
-        <div class="container">
-            <div class="header">
-                <img id='logo' src="https://i.postimg.cc/ZRS1LVh8/todo.png" alt="mujer-guardando-notas">
+    <div class="container">
+        <div class="mode">
+            <button class="switch" id="switch">
+                <span><i class="fas fa-sun"></i></span>
+                <span><i class="fas fa-moon"></i></span>
+            </button>
+        </div>
+        <br>
+        <div class="header">
+            <img id='logo' src="https://i.postimg.cc/ZRS1LVh8/todo.png" alt="mujer-guardando-notas">
+        </div>
+        <h1 class="title">Lista de ideas</h1>
+        <div class="row">
+            <div class="six columns">
+                <label class="label" for="tweet"> <i class="fas fa-lightbulb"></i>mis ideas</label>
+                <form class="tweet-form" id="formulario">
+                    <label for="tweet"></label>
+                    <textarea placeholder="¿Que estas pensando ?" id="tweet" class="u-full-width shadow"></textarea>
+                    <input type="submit" class="bnt shadow" value="Agregar">
+                </form>
             </div>
-            <h1 class="title">Lista de ideas</h1>
-            <div class="row">
-                <div class="six columns">
-                    <label for="tweet"> <i class="fas fa-lightbulb"></i>mis ideas</label>
-                    <form action="#" id="formulario">
-                        <label for="tweet"></label>
-                        <textarea placeholder="¿Que estas pensando ?" id="tweet" class="u-full-width shadow"></textarea>
-                        <input type="submit" class="button u-full-width button-primary shadow" value="Agregar">
-                    </form>
-                </div>
-                <div class="six columns">
-                    <h4>Ideas</h4>
-                    <div id="lista-tweets"></div>
-                </div>
+            <div class="six columns">
+                <h4>Ideas</h4>
+                <div id="lista-tweets"></div>
             </div>
-
         </div>
     </div>
     <!--#contenido-->
-
     <script src="assets/js/app.js"></script>
 </body>
 
