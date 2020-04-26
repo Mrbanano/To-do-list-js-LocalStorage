@@ -15,19 +15,30 @@ function eventListeners() {
 
 
 // Funciones
-
-
+function ConfirmDemo() {
+     //Ingresamos un mensaje a mostrar
+     var mensaje = confirm("¿Quieres eleminar esta idea?");
+     //Detectamos si el usuario acepto el mensaje
+     if (mensaje) {
+          return true;
+     }
+     //Detectamos si el usuario denegó el mensaje
+     else {
+          return false;
+     }
+     }
 // Añadir tweet del formulario
 function agregarTweet(e) {
 
      e.preventDefault();
      // leer el valor del textarea
      const tweet = document.getElementById('tweet').value;
+     if (tweet.length ===0 ){
+          alert("👋 Hey \n\n💻 No podemos guardar ideas en blanco ");
+     }else{
      // crear boton de eliminar
      const botonBorrar = document.createElement('i');
      botonBorrar.classList = 'borrar-tweet fas fa-trash-alt';
-     //botonBorrar.innerText = 'X';
-
      // Crear elemento y añadirle el contenido a la lista
      const li = document.createElement('p');
      const i = document.createElement('i');
@@ -44,17 +55,22 @@ function agregarTweet(e) {
      agregarTweetLocalStorage(tweet);
 
      document.getElementById('tweet').value= ''
+     }
 }
 // Elimina el Tweet del DOM
 function borrarTweet(e) {
      e.preventDefault();
      if(e.target.className === 'borrar-tweet fas fa-trash-alt') {
+          const borrar = ConfirmDemo()
+          if (borrar){
           const idea =  e.target.parentElement;
-          
           idea.remove();
           console.log(idea);
           const value = e.target.parentElement.lastChild.innerText;
           borrarTweetLocalStorage(value);
+          }else{
+               return true;
+          }
           
      } 
 }
